@@ -1,15 +1,22 @@
-// your code here
-updateURL = () => {
-        const nameValue = document.getElementById("name").value;
-        const yearValue = document.getElementById("year").value;
-        const currentURL = document.getElementById("url").innerText;
+function updateURL() {
+        var nameValue = document.getElementById('name').value;
+        var yearValue = document.getElementById('year').value;
+        var currentURL = "https://localhost:8080/";
 
-        let str = "";
-        if (nameValue !== "") {
-          str = str + "?name=" + encodeURIComponent(nameValue);
-        } else if (yearValue !== "") {
-          str = str + "?year=" + encodeURIComponent(yearValue);
+        // Initialize the query string
+        var queryString = "";
+
+        if (nameValue !== "" && yearValue !== "") {
+            queryString = "?name=" + encodeURIComponent(nameValue) + "&year=" + encodeURIComponent(yearValue);
+        } else if (nameValue === "" && yearValue !== "") {
+            queryString = "?year=" + encodeURIComponent(yearValue);
+        } else if (nameValue !== "" && yearValue === "") {
+            queryString = "?name=" + encodeURIComponent(nameValue);
         }
-        const updateURL = currentURL + str;
-        document.getElementById("url").innerText = updateURL;
-      };
+
+        // Concatenate the current URL with the query string
+        var updatedURL = currentURL + queryString;
+
+        // Update the h3 element with the new URL
+        document.getElementById('url').innerText = updatedURL;
+    }
