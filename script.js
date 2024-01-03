@@ -19,4 +19,5 @@ function updateURL() {
 
         // Update the h3 element with the new URL
         document.getElementById('url').innerText = updatedURL;
+	document.getElementById('displayURL').innerText = `Updated URL: ${updatedURL}`;
     }
